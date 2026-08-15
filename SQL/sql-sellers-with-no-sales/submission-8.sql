@@ -1,0 +1,11 @@
+-- Write your query below
+SELECT DISTINCT seller_name
+FROM seller s 
+WHERE s.seller_id NOT IN (
+    SELECT seller_id 
+    FROM orders
+    WHERE EXTRACT (YEAR FROM sale_date) = 2020
+)
+ORDER BY seller_name;
+
+--Understand clearly why there is no need of a join in this query
